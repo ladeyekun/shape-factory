@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Lateef Adeyekun">
+        <meta name="description" content="shape factory">
+        <meta name="keywords" content="Shape factory, square, circle, color">
+        <title>Shape factory</title>
+        <link rel="icon" href="./assets/img/favicon.png" type="image/x-icon">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mrspecht/cdn/reset.css" media="all">
+        <link rel="stylesheet" href="./assets/css/style.css" media="all">
+        <script src="./assets/js/app.js" defer></script>
+    </head>
+    <body>
+        <main class="container grid grid-center">
+            <div class="factory-box grid grid-center gap-30">
+                <div class="row">
+                    <h2>Shape factory</h2>
+                </div>
+                <div class="row form">
+                    <form class="flex gap-10">
+                        <select name="shape" placeholder="Shapes">
+                            <option>Shape</option>
+                            <option value="circle">Circle</option>
+                            <option value="square">Square</option>
+                        </select>
+                        <select name="color" placeholder="Colors">
+                            <option>Colour</option>
+                            <option value="#09f">Blue</option>
+                            <option value="#9f0">Green</option>
+                            <option value="#f90">Orange</option>
+                            <option value="#f09">Pink</option>
+                            <option value="#90f">Purple</option>
+                        </select>
+                        <input 
+                            type="button" 
+                            name="create-shapes" 
+                            value="Create"
+                        >
+                    </form>    
+                </div>    
+                <div class="row grid-container">
+                    <div class="shape-bucket grid">
+                    </div>
+                </div>
+                <div class="row">
+                    <p class="info">Information is displayed here</p>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
