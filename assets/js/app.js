@@ -81,7 +81,7 @@ function createShape() {
 
     shapesArr.push(newShapeObj);
 
-    newShape.className = `shape ${shape} ${color}`;
+    newShape.className = `shape ${shape}`;
     newShape.style.backgroundColor = colorSelector.value;
     newShape.setAttribute('shape-number', `${shapeCounts + 1}`);
     shapeBucket.appendChild(newShape);

@@ -127,7 +127,6 @@ input[type=button] {
     }
 }
 .form {
-
     form {
         width: 100%;
 
@@ -168,26 +167,6 @@ input[type=button] {
 
 .square {
     border-radius: 4px;
-}
-
-.blue {
-    background-color: #09f;
-}
-
-.green {
-    background-color: #9f0;
-}
-
-.pink {
-    background-color: #f09;
-}
-
-.orange {
-    background-color: #f90;
-}
-
-.purple {
-    background-color: #90f;
 }
 
 .error {
