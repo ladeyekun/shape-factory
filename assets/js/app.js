@@ -51,33 +51,30 @@ const MAX_BUCKET_SIZE = 28;
 
 
 listen('click', createShapeBtn, () => {
-    validateInputs();
+    createShape();
 });
 
-function validateInputs() {
+function isValidateInputs() {
     if (shapeSelector.selectedIndex <= 0) {
         shapeSelector.focus();
         displayError('No shape selected, please select a valid shape');
-        return;
+        return false;
     }
 
     if (colorSelector.selectedIndex <= 0 ) {
         colorSelector.focus();
         displayError('No color selected, please select a valid color');
-        return;
+        return false;
     }
-
-    let color = 
-        colorSelector.options[colorSelector.selectedIndex].text.toLowerCase();
-
-    if (isSpaceAvailable()) {
-        createShape(shapeSelector.value, color);
-    } else { 
-        displayError('No more space to create a new shape');
-    }
+    return true;
 }
 
-function createShape(shape, color) {
+function createShape() {
+     if (!isValidateInputs()) return;
+     if (!isSpaceAvailable()) return;
+    let shape = shapeSelector.value;
+    let index = colorSelector.selectedIndex;
+    let color = colorSelector.options[index].text.toLowerCase();
     let shapeCounts = getShapesNumber();
     const newShapeObj = new Shape(shape, color);
     const newShape = document.createElement('div');
@@ -85,6 +82,7 @@ function createShape(shape, color) {
     shapesArr.push(newShapeObj);
 
     newShape.className = `shape ${shape} ${color}`;
+    newShape.style.backgroundColor = colorSelector.value;
     newShape.setAttribute('shape-number', `${shapeCounts + 1}`);
     shapeBucket.appendChild(newShape);
 
@@ -99,8 +97,8 @@ function getShapesNumber() {
 }
 
 function isSpaceAvailable(){
-    console.log(getShapesNumber());
     if (getShapesNumber() >= MAX_BUCKET_SIZE) {
+        displayError('No more space to create a new shape');
         return false;
     }
     return true;
