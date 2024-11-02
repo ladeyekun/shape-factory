@@ -32,10 +32,6 @@ function select(selector, scope = document) {
     return scope.querySelector(selector);
 }
 
-function selectAll(selector, scope = document) {
-    return scope.querySelectorAll(selector);
-}
-
 function listen(event, selector, callback) {
     return selector.addEventListener(event, callback);
 }
@@ -47,8 +43,13 @@ const createShapeBtn = select('input[type="button"]');
 const infoBar = select('.info');
 const shapesArr = [];
 const MAX_BUCKET_SIZE = 28;
-
-
+const COLORS = {
+    "#09f": "Blue",
+    "#9f0": "Green",
+    "#f90": "Orange",
+    "#f09": "Pink",
+    "#90f": "Purple"
+}
 
 listen('click', createShapeBtn, () => {
     createShape();
@@ -73,9 +74,8 @@ function createShape() {
      if (!isValidateInputs()) return;
      if (!isSpaceAvailable()) return;
     let shape = shapeSelector.value;
-    let index = colorSelector.selectedIndex;
-    let color = colorSelector.options[index].text.toLowerCase();
-    let shapeCounts = getShapesNumber();
+    let color = COLORS[colorSelector.value].toLowerCase();
+    let shapeCounts = shapesArr.length;
     const newShapeObj = new Shape(shape, color);
     const newShape = document.createElement('div');
 
@@ -92,16 +92,19 @@ function createShape() {
     });
 }
 
-function getShapesNumber() {
-    return selectAll('.shape').length;
-}
-
 function isSpaceAvailable(){
-    if (getShapesNumber() >= MAX_BUCKET_SIZE) {
+    if (shapesArr.length >= MAX_BUCKET_SIZE) {
+        disableCreateBtn();
         displayError('No more space to create a new shape');
         return false;
     }
     return true;
+}
+
+function disableCreateBtn() {
+    createShapeBtn.disabled = true;
+    createShapeBtn.style.cursor = 'not-allowed';
+    createShapeBtn.style.backgroundColor = '#777';
 }
 
 function displayError(message) {
